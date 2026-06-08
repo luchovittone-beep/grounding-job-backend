@@ -77,10 +77,10 @@ fastify.post('/api/auth/register', {
   const { email, password, role } = request.body;
 
   // 1. Crear usuario en Supabase Auth
-  const { data: authData, error: authError } = await supabase.auth.admin.createUser({
+ const { data: authData, error: authError } = await supabase.auth.signUp({
     email,
-    password,
-    email_confirm: false
+    password
+});
   });
 
   if (authError) {
